@@ -1,10 +1,14 @@
 <template>
     <div class="login">
-        <h5 class="text-danger" v-if="error">{{error}}</h5>
-        
-        <div class="navbar-form navbar-right col-xs-12 col-md-7">
+
+        <div class="navbar-form col-xs-12 col-md-4">
+            <h5 class="text-danger text-center" v-if="error">{{error}}</h5>
             <!-- This is where we will send the login info to the server -->
-            <div v-if="loginForm" class="login">
+            <div v-if="user._id">
+                <h4>Welcome, {{user.name}}</h4>
+                <button @click="logout">Logout</button>
+            </div>
+            <div v-else>
                 <form type="submit" @submit.prevent="submitLogin">
                     <!-- USERNAME INPUT FORM -->
                     <div class="form-group">
@@ -20,15 +24,11 @@
                     </div>
                 </form>
                 <!-- Trigger the sign-up modal with a button -->
-                <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal"
-                data-target="#signUpModal">Sign Up</button>
-            </div>
-            <div v-else>
-                <h4></h4>
+                <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" data-target="#signUpModal">Sign Up</button>
             </div>
         </div>
     </div>
-</div>
+    </div>
 
 </template>
 
@@ -36,7 +36,6 @@
     export default {
         data() {
             return {
-                loginForm: true,
                 login: {
                     email: '',
                     password: ''
@@ -44,20 +43,23 @@
             }
         },
         methods: {
-            toggleLoginForm() {
-                this.loginForm = !this.loginForm
-            },
             submitLogin() {
                 this.$store.dispatch('login', this.login)
                 this.login = {
                     email: '',
                     password: ''
                 }
+            },
+            logout() {
+                this.$store.dispatch('logout')
             }
         },
         computed: {
             error() {
                 return this.$store.state.error.message
+            },
+            user() {
+                return this.$store.state.user
             }
         }
     }

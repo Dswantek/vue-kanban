@@ -8,6 +8,9 @@
 export default {
   name: 'app',
   components:{
+  },
+  mounted(){
+    this.$store.dispatch('authenticate')
   }
 }
 </script>

@@ -58,11 +58,14 @@ router.delete('/logout', (req, res) => {
 
 router.get('/authenticate', (req,res) => {
   Users.findById(req.session.uid).then(user => {
+    if(!user){
+      return res.status(401).send({"error": "Please Login"})
+    }
     return res.send ({
       data: user
     })
   }).catch(err=>{
-    return res.send({
+    return res.status(500).send({
       error:err
     })
   })

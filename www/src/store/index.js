@@ -20,7 +20,8 @@ var store = new vuex.Store({
   state: {
     boards: [{name: 'This is total rubbish'}],
     activeBoard: {},
-    error: {}
+    error: {},
+    user: {}
   },
   mutations: {
     setBoards(state, data){
@@ -28,23 +29,57 @@ var store = new vuex.Store({
     },
     handleError(state, err){
       state.error = err
+    },
+    setUser(state, user){
+      state.user = user
+    },
+    handelError(state, err){
+      state.error = err
     }
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
 
 
-    login(){
-
+    login({commit, dispatch}, payload){
+      debugger
+      auth.post('login', payload)
+      .then(res => {
+        commit('setUser', res.data.data)
+        
+      })
+      .catch(err => {
+        commit('handleError', err.response.data)
+      })
     },
 
-    register(){
+    register({commit, dispatch}, payload){
+      debugger
+      auth.post('register', payload)
+      .then(res => {
+        commit('setUser', res.data.data)
+      })
     },
 
-    authenticate(){
-
+    authenticate({commit, dispatch}){
+      auth('authenticate')
+      .then(res => {
+        commit('setUser', res.data.data)
+      })
+      .catch(err=>{
+        commit('handleError', err)
+      })
+      // Possibly .catch(()=>[
+      // router.push({ name: 'Login'})
+      // ])
     },
-    logout(){
+
+    logout({ commit, dispatch }){
+      auth.delete('logout')
+      .then(res=>{
+        commit()
+        console.log(res)
+      })
 
     },
 
