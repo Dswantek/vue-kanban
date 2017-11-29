@@ -39,7 +39,7 @@
                 login: {
                     email: '',
                     password: ''
-                },
+                }
             }
         },
         methods: {

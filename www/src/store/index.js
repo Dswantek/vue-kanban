@@ -42,7 +42,6 @@ var store = new vuex.Store({
 
 
     login({commit, dispatch}, payload){
-      debugger
       auth.post('login', payload)
       .then(res => {
         commit('setUser', res.data.data)
@@ -54,7 +53,6 @@ var store = new vuex.Store({
     },
 
     register({commit, dispatch}, payload){
-      debugger
       auth.post('register', payload)
       .then(res => {
         commit('setUser', res.data.data)
@@ -77,7 +75,7 @@ var store = new vuex.Store({
     logout({ commit, dispatch }){
       auth.delete('logout')
       .then(res=>{
-        commit()
+        commit('setUser', {})
         console.log(res)
       })
 
