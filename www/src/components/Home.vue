@@ -16,7 +16,9 @@
                     <!-- FORMS -->
                     <login></login>
                 </nav>
+
                 </div>
+                <signup></signup>
                 <!-- End of Modal Sign Up Form -->
                 <div class="content">
                     <div class="row">
@@ -40,13 +42,15 @@
     import Board from './Board'
     import Error from './Error'
     import Login from './Login'
+    import Signup from './Signup'
     export default {
         name: 'home',
         components: {
             Boards,
             Board,
             Error,
-            Login
+            Login,
+            Signup
         },
         data() {
             return {

@@ -13,11 +13,11 @@
                 <div class="modal-body">
                     <label for="firstName">First Name:</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="First Name ex. Johnny">
+                        <input type="text" class="form-control" placeholder="ex. Johnny">
                     </div>
                     <label for="LastName">Last Name:</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Last Name ex. Bojangles">
+                        <input type="text" class="form-control" placeholder="ex. Bojangles">
                     </div>
                     <label for="Email">Email:</label>
                     <div class="form-group">
@@ -26,7 +26,7 @@
                     <!-- USERNAME INPUT FORM -->
                     <label for="Username">Username:</label>
                     <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" class="form-control" placeholder="trackmaster123">
                     </div>
                     <!-- PASSWORD INPUT FORM -->
                     <label for="Password">Password:</label>
