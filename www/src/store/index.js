@@ -1,6 +1,7 @@
 import axios from 'axios'
 import vue from 'vue'
 import vuex from 'vuex'
+import router from 'router'
 
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
@@ -31,6 +32,22 @@ var store = new vuex.Store({
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
+
+
+    login(){
+
+    },
+
+    register(){
+    },
+
+    authenticate(){
+
+    },
+    logout(){
+
+    },
+
 
     getBoards({commit, dispatch}) {
       api('boards')

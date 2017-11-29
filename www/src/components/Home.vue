@@ -22,20 +22,24 @@
 
                     <div class="navbar-form navbar-right col-xs-12 col-md-7">
                         <!-- This is where we will send the login info to the server -->
-                        <form type="submit" @submit="login">
-                            <!-- USERNAME INPUT FORM -->
-                            <div class="form-group">
-                                <input name="email" type="text" class="form-control" placeholder="Email">
-                            </div>
-                            <!-- PASSWORD INPUT FORM -->
-                            <div class="form-group">
-                                <input name="password" type="password" class="form-control" placeholder="Password">
-                            </div>
-                            <!-- LOGIN BUTTON -->
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-default navbar-btn">Login</button>
-                            </div>
-                        </form>
+                        <div class="login">
+                            <form type="submit" @submit.prevent="login">
+                                <!-- USERNAME INPUT FORM -->
+                                <div class="form-group">
+                                    <label for="email">Email:</label>
+                                    <input name="email" type="text" class="form-control" placeholder="Email" v-model='loginData.email' required>
+                                </div>
+                                <!-- PASSWORD INPUT FORM -->
+                                <div class="form-group">
+                                    <label for="password">Password:</label>
+                                    <input name="password" type="password" class="form-control" placeholder="Password" v-model='loginData.password' required>
+                                </div>
+                                <!-- LOGIN BUTTON -->
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-default navbar-btn">Login</button>
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </nav>
             </div>
@@ -50,35 +54,44 @@
                             <h4 class="modal-title text-center">Sign Up for a Free Account</h4>
                         </div>
                         <!-- EMAIL INPUT FORM -->
-                        <div class="modal-body">
-                            <label for="FirstName">First Name:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="First Name ex. Johnny">
+                        <div class="form">
+                            <div class="register">
+
+                                <div class="modal-body">
+                                    <!-- First Name Input Form -->
+                                    <label for="FirstName">First Name:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="First Name ex. Johnny">
+                                    </div>
+                                    <!-- Last Name Input Form -->
+                                    <label for="LastName">Last Name:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Last Name ex. Bojangles">
+                                    </div>
+                                    <!-- USERNAME INPUT FORM -->
+                                    <label for="Username">Username:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Username">
+                                    </div>
+                                    <!-- Email input form -->
+                                    <label for="Email">Email:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="john.doe@gmail.com">
+                                    </div>
+                                    <!-- PASSWORD INPUT FORM -->
+                                    <label for="Password">Password:</label>
+                                    <div class="form-group">
+                                        <input type="text" class="form-control" placeholder="Password">
+                                    </div>
+                                    <!-- SIGN UP BUTTON -->
+                                    <button type="button" class="btn btn-primary navbar-btn btn-center">Sign Up</button>
+                                </div>
+                                <!-- MODAL CLOSE -->
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </div>
+
                             </div>
-                            <label for="LastName">Last Name:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Last Name ex. Bojangles">
-                            </div>
-                            <label for="Email">Email:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="john.doe@gmail.com">
-                            </div>
-                            <!-- USERNAME INPUT FORM -->
-                            <label for="Username">Username:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Username">
-                            </div>
-                            <!-- PASSWORD INPUT FORM -->
-                            <label for="Password">Password:</label>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Password">
-                            </div>
-                            <!-- SIGN UP BUTTON -->
-                            <button type="button" class="btn btn-primary navbar-btn btn-center">Sign Up</button>
-                        </div>
-                        <!-- MODAL CLOSE -->
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                     </div>
 
@@ -90,7 +103,7 @@
                 <div class="row">
                     <div class="col-xs-12">
                         <!-- <error></error> -->
-                        <board class="boards"> </board>
+                        <boards class="boards"> </boards>
                     </div>
                 </div>
 
@@ -116,14 +129,30 @@
         },
         data() {
             return {
+                loginData: {
+                    email: '',
+                    password: ''
+                },
+                registerData: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
 
+                }
             }
         },
         // mounted() {
 
         // },
         methods: {
-
+            login(){
+                //Add check to make sure password matches and username is available??
+                this.$store.dispatch('login', this.login)
+            },
+            register(){
+                this.$store.dispatch('register', this.register)
+            }
         },
 
         computed: {
