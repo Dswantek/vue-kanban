@@ -50,11 +50,27 @@
         },
         data() {
             return {
+                loginData: {
+                    email: '',
+                    password: ''
+                },
+                registerData: {
+                    firstName: '',
+                    lastName: '',
+                    email: '',
+                    password: '',
 
+                }
             }
         },
         methods: {
-
+            login(){
+                //Add check to make sure password matches and username is available??
+                this.$store.dispatch('login', this.login)
+            },
+            register(){
+                this.$store.dispatch('register', this.register)
+            }
         },
 
         computed: {
