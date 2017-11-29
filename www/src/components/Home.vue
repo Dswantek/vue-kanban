@@ -9,7 +9,6 @@
                             <img class="nav-img" alt="Brand" src="//placehold.it/50vh">
                         </a>
                     </div>
-
                     <!-- WEBSITE NAME -->
                     <div class="navbar-text col-xs-12 col-md-3" style="font-family: 'Rock Salt', cursive">
                         <h3>Track-It</h3>
@@ -107,21 +106,20 @@
     import Boards from './Boards'
     import Board from './Board'
     import Error from './Error'
+    import Login from './Login'
     export default {
         name: 'home',
         components: {
             Boards,
             Board,
-            Error
+            Error,
+            Login
         },
         data() {
             return {
 
             }
         },
-        // mounted() {
-
-        // },
         methods: {
 
         },
