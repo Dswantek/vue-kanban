@@ -69,7 +69,7 @@
 
 <style>
     .content {
-        margin-top: 5%;
+       
     }
 
     

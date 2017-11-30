@@ -122,6 +122,9 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
+    setActiveBoard({ commit, dispatch}, board){
+      commit('setActiveBoard', board)
+    },
     handleError({ commit, dispatch }, err) {
       commit('handleError', err)
     }

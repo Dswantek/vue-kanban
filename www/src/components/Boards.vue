@@ -41,17 +41,24 @@
 
     <div class="boards-content">
       <div v-for="board in boards">
-        <router-link :to="'/boards/'+board._id">{{board.name}}</router-link>
+        <router-link :to="'/boards/' + board._id">{{board.name}}</router-link>
         <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeBoard(board)"></span>
         <p>{{board.description}}</p>
       </div>
     </div>
+
   </div>
+  </div>
+
 </template>
 
 <script>
+  import Board from './Board'
   export default {
     name: 'boards',
+    components: {
+      Board
+    },
     data() {
       return {
         board: {
@@ -66,6 +73,9 @@
     computed: {
       boards() {
         return this.$store.state.boards
+      },
+      activeBoard() {
+        return this.$store.state.activeBoard
       }
     },
     methods: {
@@ -74,8 +84,10 @@
         this.board = {
           name: '',
           description: ''
-
         }
+      },
+      setActiveBoard(board) {
+        this.$store.dispatch('setActiveBoard', board)
       },
       removeBoard(board) {
         this.$store.dispatch('removeBoard', board)
@@ -85,9 +97,7 @@
 </script>
 
 <style scoped>
-
-.delete-button{
-  color: red;
-}
-
+  .delete-button {
+    color: red;
+  }
 </style>
