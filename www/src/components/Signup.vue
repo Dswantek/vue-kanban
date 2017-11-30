@@ -25,10 +25,10 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="trackmaster123" required v-model="register.username">
                         </div>
-                        <label for="Username">Username:</label>
+                        <label for="Username">Profile Image:</label>
                         <!-- IMG INPUT FORM -->
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="image url here" required v-model="register.image">
+                            <input type="image" class="form-control" placeholder="image url here" v-model="register.image">
                         </div>
                         <!-- PASSWORD INPUT FORM -->
                         <label for="Password">Password:</label>
