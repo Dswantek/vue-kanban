@@ -65,7 +65,7 @@
             }
         },
         mounted() {
-            this.$store.dispatch('getLists')
+            // this.$store.dispatch('getListsByBoard', board)
         },
         computed: {
             lists() {
@@ -82,6 +82,9 @@
                     name: '',
                     description: ''
                 }
+            },
+            getListsByBoard(boardId){
+                this.$store.dispatch('getListsByBoard', boardId)
             },
             // setActiveList(list) {
             //     this.$store.dispatch('setActiveList', list)

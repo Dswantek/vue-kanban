@@ -131,8 +131,8 @@ var store = new vuex.Store({
     },
 
     //Lists
-    getLists({ commit, dispatch }) {
-      api('lists')
+    getListsByBoard({ commit, dispatch }, boardId) {
+      api('boards/' + boardId + '/lists')
         .then(res => {
           commit('setLists', res.data.data)
         })
@@ -140,6 +140,9 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
+    // getLists({ commit, dispatch }){
+    //   api('myLists')
+    // },
     getList({ commit, dispatch }, id) {
       api('lists/' + id)
         .then(res => {
@@ -150,7 +153,7 @@ var store = new vuex.Store({
         })
     },
     createList({ commit, dispatch }, list) {
-      api.post('lists/', list)
+      api.post('boards/:boardId/lists/', list)
         .then(res => {
           dispatch('getLists')
           console.log("succesfully created list")
