@@ -1,18 +1,15 @@
 <template>
     <div class="home text-center">
         <div class="container-fluid">
-        
                 <signup></signup>
                 <!-- End of Modal Sign Up Form -->
                 <div class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- <error></error> -->
-                            <board class="boards"></board>
+                            <boards class="boards"></boards>
                         </div>
                     </div>
-
-
                 </div>
                 <!-- End Content Section -->
             </div>
