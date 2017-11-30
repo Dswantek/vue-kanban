@@ -21,11 +21,15 @@ var store = new vuex.Store({
     boards: [],
     activeBoard: {},
     error: {},
-    user: {}
+    user: {},
+    lists: []
   },
   mutations: {
     setBoards(state, data) {
       state.boards = data
+    },
+    setLists(state, data){
+      state.lists = data
     },
     handleError(state, err) {
       state.error = err
@@ -125,6 +129,48 @@ var store = new vuex.Store({
     setActiveBoard({ commit, dispatch}, board){
       commit('setActiveBoard', board)
     },
+
+    //Lists
+    getLists({ commit, dispatch }) {
+      api('lists')
+        .then(res => {
+          commit('setLists', res.data.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    getList({ commit, dispatch }, id) {
+      api('lists/' + id)
+        .then(res => {
+          commit('setActiveList', res.data.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    createList({ commit, dispatch }, list) {
+      api.post('lists/', list)
+        .then(res => {
+          dispatch('getLists')
+          console.log("succesfully created list")
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    removeList({ commit, dispatch }, list) {
+      api.delete('lists/' + list._id)
+        .then(res => {
+          dispatch('getLists')
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+
+
+    //Error
     handleError({ commit, dispatch }, err) {
       commit('handleError', err)
     }

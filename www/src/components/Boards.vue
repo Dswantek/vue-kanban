@@ -24,13 +24,13 @@
               </div>
               <!-- SIGN UP BUTTON -->
               <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-center">Add Board</button>
+                <button type="submit" class="btn btn-success btn-center">Add Board</button>
               </div>
             </form>
           </div>
           <!-- MODAL CLOSE -->
           <div class="modal-footer">
-            <button type="button" class="btn btn-default btn-center" data-dismiss="modal">Close</button>
+            <button type="button" class="btn btn-danger btn-center" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>

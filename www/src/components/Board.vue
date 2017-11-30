@@ -8,14 +8,17 @@
         {{board.name}}
       </h3>
     </div>
-    <button>Add List</button>
+    <lists></lists>
   </div>
 </template>
 
 <script>
+  import Lists from './Lists'
   export default {
     name: 'board',
-
+    components:{
+      Lists
+    },
     mounted() {
       this.$store.dispatch('getBoard', this.$route.params.id)
     },

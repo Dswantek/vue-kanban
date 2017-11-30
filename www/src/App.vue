@@ -10,7 +10,7 @@
           <!-- FORMS -->
           <login></login>
         </nav>
-
+        <signup></signup>
       </div>
       <!-- End Content Section -->
       <div class="page-content">
@@ -23,10 +23,12 @@
 
 <script>
   import Login from './components/Login'
+  import Signup from './components/Signup'
   export default {
     name: 'app',
     components: {
-      Login
+      Login,
+      Signup
     },
     mounted() {
       this.$store.dispatch('authenticate')

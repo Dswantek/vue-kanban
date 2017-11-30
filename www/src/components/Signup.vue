@@ -37,13 +37,13 @@
                         </div>
                         <!-- SIGN UP BUTTON -->
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary navbar-btn btn-center">Sign Up</button>
+                            <button type="submit" class="btn btn-success navbar-btn btn-center">Sign Up</button>
                         </div>
                     </form>
                 </div>
                 <!-- MODAL CLOSE -->
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>
         </div>
