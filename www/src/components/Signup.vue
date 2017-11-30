@@ -65,7 +65,6 @@
         },
         methods: {
             submitRegister() {
-                debugger
                 this.$store.dispatch('register', this.register)
                 this.register = {
                     name: '',

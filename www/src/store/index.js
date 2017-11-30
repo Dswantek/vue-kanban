@@ -53,6 +53,9 @@ var store = new vuex.Store({
     },
 
     register({ commit, dispatch }, payload) {
+      if(payload.image === ''){
+        delete payload.image
+      }
       auth.post('register', payload)
         .then(res => {
           commit('setUser', res.data.data)
