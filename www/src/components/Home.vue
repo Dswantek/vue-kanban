@@ -68,9 +68,9 @@
 </script>
 
 <style>
-    .content {
+    /* .content {
        
-    }
+    } */
 
     
 </style>

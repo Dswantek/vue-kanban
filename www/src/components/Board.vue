@@ -33,5 +33,5 @@
 </script>
 
 <style scoped>
-  .board-content {}
+  /* .board-content {} */
 </style>
