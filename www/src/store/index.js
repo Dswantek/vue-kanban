@@ -24,102 +24,102 @@ var store = new vuex.Store({
     user: {}
   },
   mutations: {
-    setBoards(state, data){
+    setBoards(state, data) {
       state.boards = data
     },
-    handleError(state, err){
+    handleError(state, err) {
       state.error = err
     },
-    setUser(state, user){
+    setUser(state, user) {
       state.user = user
     },
-    handelError(state, err){
-      state.error = err
+    setActiveBoard(state, data) {
+      state.activeBoard = data
     }
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
 
 
-    login({commit, dispatch}, payload){
+    login({ commit, dispatch }, payload) {
       auth.post('login', payload)
-      .then(res => {
-        commit('setUser', res.data.data)
-        
-      })
-      .catch(err => {
-        commit('handleError', err.response.data)
-      })
+        .then(res => {
+          commit('setUser', res.data.data)
+
+        })
+        .catch(err => {
+          commit('handleError', err.response.data)
+        })
     },
 
-    register({commit, dispatch}, payload){
+    register({ commit, dispatch }, payload) {
       auth.post('register', payload)
-      .then(res => {
-        commit('setUser', res.data.data)
-      })
+        .then(res => {
+          commit('setUser', res.data.data)
+        })
     },
 
-    authenticate({commit, dispatch}){
+    authenticate({ commit, dispatch }) {
       auth('authenticate')
-      .then(res => {
-        commit('setUser', res.data.data)
-      })
-      .catch(err=>{
-        commit('handleError', err)
-      })
+        .then(res => {
+          commit('setUser', res.data.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
       // Possibly .catch(()=>[
       // router.push({ name: 'Login'})
       // ])
     },
 
-    logout({ commit, dispatch }){
+    logout({ commit, dispatch }) {
       auth.delete('logout')
-      .then(res=>{
-        commit('setUser', {})
-        console.log(res)
-      })
+        .then(res => {
+          commit('setUser', {})
+          console.log(res)
+        })
 
     },
 
 
-    getBoards({commit, dispatch}) {
+    getBoards({ commit, dispatch }) {
       api('boards')
         .then(res => {
           commit('setBoards', res.data.data)
         })
-        .catch(err=>{
+        .catch(err => {
           commit('handleError', err)
         })
     },
-    getBoard({commit, dispatch},id) {
+    getBoard({ commit, dispatch }, id) {
       api('boards/' + id)
         .then(res => {
           commit('setActiveBoard', res.data.data)
         })
-        .catch(err=>{
+        .catch(err => {
           commit('handleError', err)
         })
     },
-    createBoard({commit, dispatch}, board) {
-      debugger
-      api.post('boards/',board)
+    createBoard({ commit, dispatch }, board) {
+      api.post('boards/', board)
+        .then(res => {
+          dispatch('getBoards')
+          console.log("succesfully created board")
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    removeBoard({ commit, dispatch }, board) {
+      api.delete('boards/' + board._id)
         .then(res => {
           dispatch('getBoards')
         })
-        .catch(err=>{
+        .catch(err => {
           commit('handleError', err)
         })
     },
-    removeBoard({commit, dispatch}, board) {
-      api.delete('boards/'+board._id)
-        .then(res => {
-          this.getBoards()
-        })
-        .catch(err=>{
-          commit('handleError', err)
-        })
-    },
-    handleError({commit, dispatch}, err){
+    handleError({ commit, dispatch }, err) {
       commit('handleError', err)
     }
   }

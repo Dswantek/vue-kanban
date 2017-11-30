@@ -1,30 +1,14 @@
 <template>
     <div class="home text-center">
         <div class="container-fluid">
-            <div class="row">
-                <nav class="navbar navbar-default navbar-fixed-top">
-                    <!-- <div class="navbar-header col-xs-12 col-md-1 text-center">
-                        (Brand Image)
-                        <a class="navbar-brand">
-                            <img class="nav-img" alt="Brand" src="user.image">
-                        </a>
-                    </div> -->
-                    <!-- WEBSITE NAME -->
-                    <div class="navbar-text col-xs-12 col-md-4" style="font-family: 'Rock Salt', cursive">
-                        <h3>Track-It</h3>
-                    </div>
-                    <!-- FORMS -->
-                    <login></login>
-                </nav>
-
-                </div>
+        
                 <signup></signup>
                 <!-- End of Modal Sign Up Form -->
                 <div class="content">
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- <error></error> -->
-                            <boards class="boards"></boards>
+                            <board class="boards"></board>
                         </div>
                     </div>
 

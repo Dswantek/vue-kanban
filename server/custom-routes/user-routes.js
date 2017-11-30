@@ -25,6 +25,20 @@ module.exports = {
           return next(handleResponse(action, null, error))
         })
     }
+  },
+  createBoards: {
+    path: '/userboards',
+    reqType: 'post', 
+    method(req, res, next){
+      debugger
+      let action = 'Create Board'
+      Board.create(req.body)
+      .then(board => {
+        res.send(handleResponse(action, board))
+      }).catch(error => {
+        return next(handleResponse(action, null, error))
+      })
+    }
   }
 }
 

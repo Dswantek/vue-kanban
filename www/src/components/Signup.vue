@@ -28,7 +28,7 @@
                         <label for="Username">Profile Image:</label>
                         <!-- IMG INPUT FORM -->
                         <div class="form-group">
-                            <input type="image" class="form-control" placeholder="image url here" v-model="register.image">
+                            <input type="text" class="form-control" placeholder="image url here" v-model="register.image">
                         </div>
                         <!-- PASSWORD INPUT FORM -->
                         <label for="Password">Password:</label>
