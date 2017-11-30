@@ -24,7 +24,7 @@
                     <div class="row">
                         <div class="col-xs-12">
                             <!-- <error></error> -->
-                            <board class="boards"></board>
+                            <boards class="boards"></boards>
                         </div>
                     </div>
 
