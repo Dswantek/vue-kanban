@@ -153,9 +153,10 @@ var store = new vuex.Store({
         })
     },
     createList({ commit, dispatch }, list) {
-      api.post('boards/:boardId/lists/', list)
+      api.post('/boards/:boardId/lists', list)
         .then(res => {
-          dispatch('getLists')
+          dispatch('getListsByBoard')
+          commit('setLists')
           console.log("succesfully created list")
         })
         .catch(err => {
