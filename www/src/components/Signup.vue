@@ -25,6 +25,11 @@
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="trackmaster123" required v-model="register.username">
                         </div>
+                        <label for="Username">Username:</label>
+                        <!-- IMG INPUT FORM -->
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="image url here" required v-model="register.image">
+                        </div>
                         <!-- PASSWORD INPUT FORM -->
                         <label for="Password">Password:</label>
                         <div class="form-group">
@@ -53,6 +58,7 @@
                     name: '',
                     email: '',
                     username: '',
+                    image: '',
                     password: ''
                 }
             }
@@ -65,6 +71,7 @@
                     name: '',
                     email: '',
                     username: '',
+                    image: '',
                     password: ''
                 }
             },

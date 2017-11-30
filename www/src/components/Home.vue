@@ -3,14 +3,14 @@
         <div class="container-fluid">
             <div class="row">
                 <nav class="navbar navbar-default navbar-fixed-top">
-                    <div class="navbar-header col-xs-12 col-md-1 text-center">
-                        <!-- "BRAND" IMAGE -->
+                    <!-- <div class="navbar-header col-xs-12 col-md-1 text-center">
+                        (Brand Image)
                         <a class="navbar-brand">
-                            <img class="nav-img" alt="Brand" src="//placehold.it/50vh">
+                            <img class="nav-img" alt="Brand" src="user.image">
                         </a>
-                    </div>
+                    </div> -->
                     <!-- WEBSITE NAME -->
-                    <div class="navbar-text col-xs-12 col-md-3" style="font-family: 'Rock Salt', cursive">
+                    <div class="navbar-text col-xs-12 col-md-4" style="font-family: 'Rock Salt', cursive">
                         <h3>Track-It</h3>
                     </div>
                     <!-- FORMS -->

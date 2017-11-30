@@ -1,11 +1,14 @@
 <template>
     <div class="login">
 
-        <div class="navbar-form col-xs-12 col-md-4">
+        <div class="navbar-form navbar-right col-xs-12 col-md-pull-1">
             <h5 class="text-danger text-center" v-if="error">{{error}}</h5>
             <!-- This is where we will send the login info to the server -->
             <div v-if="user._id">
                 <h4>Welcome, {{user.name}}</h4>
+                <div class="profileImage">
+                    <img class="img-responsive userImage" :src="user.image" alt="Cat">
+                </div>
                 <button @click="logout">Logout</button>
             </div>
             <div v-else>
@@ -66,4 +69,10 @@
 </script>
 
 <style>
+    .userImage {
+        max-height: 12vh;
+        max-width: 12vh;
+        display: inline-flex;
+
+    }
 </style>
