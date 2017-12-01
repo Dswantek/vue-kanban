@@ -172,8 +172,48 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-
-
+    //Tasks
+    // getTasksByList({ commit, dispatch }, listId) {
+    //   api('boards/' + boardId + '/lists')
+    //     .then(res => {
+    //       commit('setLists', res.data.data)
+    //     })
+    //     .catch(err => {
+    //       commit('handleError', err)
+    //     })
+    // },
+    // getLists({ commit, dispatch }){
+    //   api('myLists')
+    // },
+    // getList({ commit, dispatch }, id) {
+    //   api('lists/' + id)
+    //     .then(res => {
+    //       commit('setActiveList', res.data.data)
+    //     })
+    //     .catch(err => {
+    //       commit('handleError', err)
+    //     })
+    // },
+    // createList({ commit, dispatch }, list) {
+    //   api.post('/boards/:boardId/lists', list)
+    //     .then(res => {
+    //       dispatch('getListsByBoard')
+    //       commit('setLists')
+    //       console.log("succesfully created list")
+    //     })
+    //     .catch(err => {
+    //       commit('handleError', err)
+    //     })
+    // },
+    // removeList({ commit, dispatch }, list) {
+    //   api.delete('lists/' + list._id)
+    //     .then(res => {
+    //       dispatch('getLists')
+    //     })
+    //     .catch(err => {
+    //       commit('handleError', err)
+    //     })
+    // },
     //Error
     handleError({ commit, dispatch }, err) {
       commit('handleError', err)
