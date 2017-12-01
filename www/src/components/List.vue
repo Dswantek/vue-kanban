@@ -15,7 +15,7 @@
                         </div>
                         <!-- EMAIL INPUT FORM -->
                         <div class="modal-body">
-                            <form type="submit" @submit.prevent="createTask">
+                            <form type="submit" @submit.prevent="createTask(list._id)">
                                 <div class="form-group">
                                     <label for="Title">Title:</label>
                                     <input type="text" class="form-control" placeholder="Task Title" required v-model="task.name">
@@ -82,7 +82,7 @@
             }
         },
         methods: {
-            createTask() {
+            createTask(listId) {
                 var newTask = {
                     name: this.task.name,
                     description: this.task.description,

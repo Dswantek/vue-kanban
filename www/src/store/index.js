@@ -177,7 +177,6 @@ var store = new vuex.Store({
     // Tasks
 
     getTasksByList({ commit, dispatch }, payload) {
-      debugger
       api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
         .then(res => {
           commit('setTasks', res.data.data)
