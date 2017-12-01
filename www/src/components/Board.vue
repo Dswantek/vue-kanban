@@ -42,8 +42,9 @@
         </div>
       </div>
     </div>
-
-    <list></list>
+    <div class="list-content">
+        <list v-for="list in lists" :list="list"></list>
+    </div>
   </div>
 </template>
 

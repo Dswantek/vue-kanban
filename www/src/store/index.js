@@ -40,6 +40,9 @@ var store = new vuex.Store({
     },
     setActiveBoard(state, data) {
       state.activeBoard = data
+    },
+    setTasks(state, data){
+      state.tasks = data
     }
   },
   actions: {
@@ -141,18 +144,15 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    // getLists({ commit, dispatch }){
-    //   api('myLists')
+    // getList({ commit, dispatch }, id) {
+    //   api('lists/' + id)
+    //     .then(res => {
+    //       commit('setActiveList', res.data.data)
+    //     })
+    //     .catch(err => {
+    //       commit('handleError', err)
+    //     })
     // },
-    getList({ commit, dispatch }, id) {
-      api('lists/' + id)
-        .then(res => {
-          commit('setActiveList', res.data.data)
-        })
-        .catch(err => {
-          commit('handleError', err)
-        })
-    },
     createList({ commit, dispatch }, list) {
       api.post('lists/', list)
         .then(res => {
@@ -167,55 +167,56 @@ var store = new vuex.Store({
     removeList({ commit, dispatch }, list) {
       api.delete('lists/' + list._id)
         .then(res => {
-          dispatch('getLists')
+          dispatch('getListsByBoard', list.boardId)
         })
         .catch(err => {
           commit('handleError', err)
         })
     },
-    //Tasks
-    // getTasksByList({ commit, dispatch }, listId) {
-    //   api('boards/' + boardId + '/lists')
+
+    // Tasks
+
+    getTasksByList({ commit, dispatch }, payload) {
+      api('boards/' + boardId + '/lists/' + listId + '/tasks')
+        .then(res => {
+          commit('setTasks', res.data.data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    // getTask({ commit, dispatch }, id) {
+    //   api('tasks/' + id)
     //     .then(res => {
-    //       commit('setLists', res.data.data)
+    //       commit('setActiveTask', res.data.data)
     //     })
     //     .catch(err => {
     //       commit('handleError', err)
     //     })
     // },
-    // getLists({ commit, dispatch }){
-    //   api('myLists')
-    // },
-    // getList({ commit, dispatch }, id) {
-    //   api('lists/' + id)
-    //     .then(res => {
-    //       commit('setActiveList', res.data.data)
-    //     })
-    //     .catch(err => {
-    //       commit('handleError', err)
-    //     })
-    // },
-    // createList({ commit, dispatch }, list) {
-    //   api.post('/boards/:boardId/lists', list)
-    //     .then(res => {
-    //       dispatch('getListsByBoard')
-    //       commit('setLists')
-    //       console.log("succesfully created list")
-    //     })
-    //     .catch(err => {
-    //       commit('handleError', err)
-    //     })
-    // },
-    // removeList({ commit, dispatch }, list) {
-    //   api.delete('lists/' + list._id)
-    //     .then(res => {
-    //       dispatch('getLists')
-    //     })
-    //     .catch(err => {
-    //       commit('handleError', err)
-    //     })
-    // },
+    createTask({ commit, dispatch }, task) {
+      api.post('/boards/:boardId/lists/:listId/tasks', task)
+        .then(res => {
+          dispatch('getListsByList')
+          commit('setTasks')
+          console.log("succesfully created task")
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    removeTask({ commit, dispatch }, task) {
+      api.delete('tasks/' + task._id)
+        .then(res => {
+          dispatch('getTasks')
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+
     //Error
+    
     handleError({ commit, dispatch }, err) {
       commit('handleError', err)
     }

@@ -16,6 +16,10 @@ const models = {
     name: 'List',
     endpoint: 'lists'
   },
+  task: {
+    name: 'Task',
+    endpoint: 'tasks'
+  },
   user: {
     name: 'User',
     endpoint: 'users',

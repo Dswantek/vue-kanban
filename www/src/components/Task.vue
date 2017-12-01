@@ -13,23 +13,22 @@
 </template>
 
 <script>
-    // import Tasks from './Tasks'
     export default {
         name: 'list',
         components: {
-            // Tasks
+
         },
         mounted() {
             this.$store.dispatch('getList', this.$route.params.id)
         },
         methods: {
-            setActiveList() {
-                this.$store.dispatch('setActiveList')
-            }
+            // setActiveList() {
+            //     this.$store.dispatch('setActiveTask')
+            // }
         },
         computed: {
-            list() {
-                return this.$store.state.activeList
+            tasks() {
+                return this.$store.state.tasks
             }
         }
     }

@@ -41,13 +41,14 @@
 
     <div class="boards-content text-center">
       <div v-for="board in boards">
-        <router-link :to="'/boards/' + board._id"><h3>{{board.name}}</h3></router-link>
+        <router-link :to="'/boards/' + board._id">
+          <h3>{{board.name}}</h3>
+        </router-link>
         <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeBoard(board)"></span>
         <p>{{board.description}}</p>
       </div>
     </div>
 
-  </div>
   </div>
 
 </template>

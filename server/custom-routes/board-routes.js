@@ -1,6 +1,7 @@
 let Users = require('../models/user')
 let Boards = require('../models/board')
 let Lists = require('../models/list')
+let Tasks = require('../models/task')
 
 
 module.exports = {
@@ -18,23 +19,20 @@ module.exports = {
                 })
         }
     },
-    // createList: {
-    //     path: '/boards/:boardId/lists',
-    //     reqType: 'post',
-    //     method(req, res, next) {
-    //         debugger
-    //         let action = 'Create New List On Board'
-    //         List.create(req.body)
-    //             .then(list => {
-    //                 debugger
-    //                 console.log(res)
-    //                 res.send(handleResponse(action, list))
-    //             })
-    //             .catch(error => {
-    //                 return next(handleResponse(action, null, error))
-    //             })
-    //     }
-    // }
+    getTasksByList: {
+        path: '/boards/:boardId/lists/:listId/tasks',
+        reqType: 'get',
+        method(req, res, next) {
+            let action = 'Find Tasks By List'
+            Tasks.find({ listId: req.params.listId })
+                .then(tasks => {
+                    res.send(handleResponse(action, tasks))
+                })
+                .catch(error => {
+                    return next(handleResponse(action, null, error))
+                })
+        }
+    }
 
 }
 
