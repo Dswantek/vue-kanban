@@ -76,17 +76,17 @@
     methods: {
       setActiveBoard() {
         this.$store.dispatch('setActiveBoard')
+      },
+      createList() {
+        this.$store.dispatch('createList', this.list)
+        this.list = {
+          name: '',
+          description: ''
+        }
+      },
+      removeList(list) {
+        this.$store.dispatch('removeList', list)
       }
-    },
-    createList() {
-      this.$store.dispatch('createList', this.list)
-      this.list = {
-        name: '',
-        description: ''
-      }
-    },
-    removeList(list) {
-      this.$store.dispatch('removeList', list)
     },
     computed: {
       board() {
