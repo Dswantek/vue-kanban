@@ -1,14 +1,8 @@
 <template>
     <div class="list-content">
-        <router-link class="pull-left" :to="'/'">
-            <button>Lists</button>
-        </router-link>
-        <div class="text-center">
-            <h3>
-                {{list.name}}
-            </h3>
-        </div>
-        <!-- <tasks></tasks> -->
+        <h4>{{task.name}}</h4>
+        <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
+        <p>{{task.description}}</p>
     </div>
 </template>
 
@@ -18,8 +12,9 @@
         components: {
 
         },
+        props:['task'],
         mounted() {
-            this.$store.dispatch('getList', this.$route.params.id)
+
         },
         methods: {
             // setActiveList() {
@@ -35,5 +30,7 @@
 </script>
 
 <style scoped>
-    /* .board-content {} */
+    .delete-button {
+        color: red;
+    }
 </style>

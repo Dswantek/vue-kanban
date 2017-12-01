@@ -41,12 +41,8 @@
         </div>
         <!-- BEGIN MODAL -->
 
-        <div class="tasks-content">
-            <div v-for="task in tasks">
-                <router-link :to="'/tasks/' + task._id">{{task.name}}</router-link>
-                <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
-                <p>{{task.description}}</p>
-            </div>
+        <div class="task-content">
+            <task v-for="task in tasks" :task="task"></task>
         </div>
 
     </div>
@@ -71,33 +67,33 @@
         },
         props: ['list'],
         mounted() {
-            this.$store.dispatch('getList', this.$route.params.id),
-                this.$store.dispatch('getTasksByList', this.$route.params.id)
+            var listTasks = {
+                    listId: this.list._id,
+                    boardId: this.list.boardId
+                }
+            this.$store.dispatch('getTasksByList', listTasks)   
         },
         computed: {
             tasks() {
                 return this.$store.state.tasks
+            },
+            board() {
+                return this.$store.state.activeBoard
             }
-            // board(){
-            //     return this.$store.state.activeBoard
-            // }
         },
         methods: {
             createTask() {
                 var newTask = {
-                    nam: this.name,
-                    description: this.description,
+                    name: this.task.name,
+                    description: this.task.description,
                     listId: this.list._id,
-                    boardId: this.list.board._id
+                    boardId: this.list.boardId
                 }
                 this.$store.dispatch('createTask', newTask)
                 this.task = {
                     name: '',
                     description: ''
                 }
-            },
-            getTasksByList(taskId) {
-                this.$store.dispatch('getTasksByList', taskId)
             },
             removeTask(task) {
                 this.$store.dispatch('removetask', task)
