@@ -24,6 +24,18 @@ module.exports = {
                 })
         }
     },
+    createList: {
+        path: '/boards/:boardId/lists',
+        reqType: 'post',
+        method(req, res, next) {
+            let action = 'Create New List On Board'
+            List.create(req.body)
+                .then(res => console.log(res))
+                .catch(error => {
+                    return next(handleResponse(action, null, error))
+                })
+        }
+    }
 
 }
 
