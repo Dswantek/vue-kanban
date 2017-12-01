@@ -22,7 +22,8 @@ var store = new vuex.Store({
     activeBoard: {},
     error: {},
     user: {},
-    lists: []
+    lists: [],
+    tasks: []
   },
   mutations: {
     setBoards(state, data) {
@@ -153,10 +154,10 @@ var store = new vuex.Store({
         })
     },
     createList({ commit, dispatch }, list) {
-      api.post('/boards/:boardId/lists', list)
+      api.post('lists/', list)
         .then(res => {
-          dispatch('getListsByBoard')
-          commit('setLists')
+          dispatch('getListsByBoard', list.boardId)
+          // commit('setLists')
           console.log("succesfully created list")
         })
         .catch(err => {

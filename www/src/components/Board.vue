@@ -43,14 +43,6 @@
       </div>
     </div>
 
-    <div class="lists-content">
-      <div v-for="list in lists">
-        <router-link :to="'/lists/' + list._id">{{list.name}}</router-link>
-        <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeList(list)"></span>
-        <p>{{list.description}}</p>
-      </div>
-    </div>
-
     <list></list>
   </div>
 </template>
@@ -71,14 +63,20 @@
       List
     },
     mounted() {
-      this.$store.dispatch('getBoard', this.$route.params.id)
+      this.$store.dispatch('getBoard', this.$route.params.id),
+        this.$store.dispatch('getListsByBoard', this.$route.params.id)
     },
     methods: {
       setActiveBoard() {
         this.$store.dispatch('setActiveBoard')
       },
       createList() {
-        this.$store.dispatch('createList', this.list)
+        var newList = {
+          name: this.list.name,
+          description: this.list.description,
+          boardId: this.board._id
+        }
+        this.$store.dispatch('createList', newList)
         this.list = {
           name: '',
           description: ''

@@ -9,33 +9,32 @@ module.exports = {
         reqType: 'get',
         method(req, res, next) {
             let action = 'Find Lists By Board'
-            Users.findById(req.session.uid)
-                .then(user => {
-                    Lists.find({ boardId: req.params.boardId })
-                        .then(lists => {
-                            res.send(handleResponse(action, lists))
-                        })
-                        .catch(error => {
-                            return next(handleResponse(action, null, error))
-                        })
+            Lists.find({ boardId: req.params.boardId })
+                .then(lists => {
+                    res.send(handleResponse(action, lists))
                 })
                 .catch(error => {
                     return next(handleResponse(action, null, error))
                 })
         }
     },
-    createList: {
-        path: '/boards/:boardId/lists',
-        reqType: 'post',
-        method(req, res, next) {
-            let action = 'Create New List On Board'
-            List.create(req.body)
-                .then(res => console.log(res))
-                .catch(error => {
-                    return next(handleResponse(action, null, error))
-                })
-        }
-    }
+    // createList: {
+    //     path: '/boards/:boardId/lists',
+    //     reqType: 'post',
+    //     method(req, res, next) {
+    //         debugger
+    //         let action = 'Create New List On Board'
+    //         List.create(req.body)
+    //             .then(list => {
+    //                 debugger
+    //                 console.log(res)
+    //                 res.send(handleResponse(action, list))
+    //             })
+    //             .catch(error => {
+    //                 return next(handleResponse(action, null, error))
+    //             })
+    //     }
+    // }
 
 }
 
