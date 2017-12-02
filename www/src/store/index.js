@@ -23,13 +23,13 @@ var store = new vuex.Store({
     error: {},
     user: {},
     lists: [],
-    tasks: []
+    tasks: {}
   },
   mutations: {
     setBoards(state, data) {
       state.boards = data
     },
-    setLists(state, data){
+    setLists(state, data) {
       state.lists = data
     },
     handleError(state, err) {
@@ -41,8 +41,8 @@ var store = new vuex.Store({
     setActiveBoard(state, data) {
       state.activeBoard = data
     },
-    setTasks(state, data){
-      state.tasks = data
+    setTasks(state, data) {
+      vue.set(state.tasks, data.listId, data.data)
     }
   },
   actions: {
@@ -61,7 +61,7 @@ var store = new vuex.Store({
     },
 
     register({ commit, dispatch }, payload) {
-      if(payload.image === ''){
+      if (payload.image === '') {
         delete payload.image
       }
       auth.post('register', payload)
@@ -130,7 +130,7 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    setActiveBoard({ commit, dispatch}, board){
+    setActiveBoard({ commit, dispatch }, board) {
       commit('setActiveBoard', board)
     },
 
@@ -157,7 +157,6 @@ var store = new vuex.Store({
       api.post('lists/', list)
         .then(res => {
           dispatch('getListsByBoard', list.boardId)
-          // commit('setLists')
           console.log("succesfully created list")
         })
         .catch(err => {
@@ -178,8 +177,12 @@ var store = new vuex.Store({
 
     getTasksByList({ commit, dispatch }, payload) {
       api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks')
-        .then(res => {
-          commit('setTasks', res.data.data)
+        .then(res => { 
+          var data = {
+            data: res.data.data,
+            listId: payload.listId
+          }
+          commit('setTasks', data)
         })
         .catch(err => {
           commit('handleError', err)
@@ -195,7 +198,6 @@ var store = new vuex.Store({
     //     })
     // },
     createTask({ commit, dispatch }, payload) {
-      debugger
       api.post('/tasks', payload)
         .then(res => {
           dispatch('getTasksByList', payload)
@@ -216,7 +218,7 @@ var store = new vuex.Store({
     },
 
     //Error
-    
+
     handleError({ commit, dispatch }, err) {
       commit('handleError', err)
     }

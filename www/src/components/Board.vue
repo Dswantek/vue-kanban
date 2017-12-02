@@ -42,14 +42,14 @@
         </div>
       </div>
     </div>
-    <div class="list-content">
-        <list v-for="list in lists" :list="list"></list>
+    <div class="list-content" v-for="list in lists">
+        <list :listprop="list"></list>
     </div>
   </div>
 </template>
 
 <script>
-  import List from './List'
+  import list from './List'
   export default {
     name: 'board',
     data() {
@@ -61,7 +61,7 @@
       }
     },
     components: {
-      List
+      list
     },
     mounted() {
       this.$store.dispatch('getBoard', this.$route.params.id),
