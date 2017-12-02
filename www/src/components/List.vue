@@ -59,7 +59,7 @@
         },
         data() {
             return {
-                target: '#'+this.listprop._id,
+                target: '#' + this.listprop._id,
                 task: {
                     name: '',
                     description: ''
@@ -68,7 +68,7 @@
         },
         props: ['listprop'],
         mounted() {
-            this.$store.dispatch('getTasksByList', { boardId: this.listprop.boardId, listId: this.listprop._id})
+            this.$store.dispatch('getTasksByList', { boardId: this.listprop.boardId, listId: this.listprop._id })
         },
         computed: {
             tasks() {
@@ -91,10 +91,11 @@
                     name: '',
                     description: ''
                 }
+            }, removeList(listprop) {
+                this.$store.dispatch('removeList', listprop)
+                // this.$store.dispatch('removeTask', listprop)
             },
-            removeTask(task) {
-                this.$store.dispatch('removetask', task)
-            }
+            
         }
     }
 </script>

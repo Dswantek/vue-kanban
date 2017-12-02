@@ -72,6 +72,7 @@
         this.$store.dispatch('setActiveBoard')
       },
       createList() {
+        debugger
         var newList = {
           name: this.list.name,
           description: this.list.description,
@@ -82,9 +83,6 @@
           name: '',
           description: ''
         }
-      },
-      removeList(list) {
-        this.$store.dispatch('removeList', list)
       }
     },
     computed: {

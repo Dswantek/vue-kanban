@@ -17,9 +17,10 @@
 
         },
         methods: {
-            // setActiveList() {
-            //     this.$store.dispatch('setActiveTask')
-            // }
+            removeTask(task) {
+                debugger
+                this.$store.dispatch('removeTask', task)
+            }
         },
         computed: {
             tasks() {

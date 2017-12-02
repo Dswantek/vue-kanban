@@ -115,7 +115,7 @@ var store = new vuex.Store({
       api.post('boards/', board)
         .then(res => {
           dispatch('getBoards')
-          console.log("succesfully created board")
+          console.log("Successfully created board")
         })
         .catch(err => {
           commit('handleError', err)
@@ -125,6 +125,7 @@ var store = new vuex.Store({
       api.delete('boards/' + board._id)
         .then(res => {
           dispatch('getBoards')
+          console.log("Successfully deleted board")
         })
         .catch(err => {
           commit('handleError', err)
@@ -157,7 +158,7 @@ var store = new vuex.Store({
       api.post('lists/', list)
         .then(res => {
           dispatch('getListsByBoard', list.boardId)
-          console.log("succesfully created list")
+          console.log("Successfully created List")
         })
         .catch(err => {
           commit('handleError', err)
@@ -167,6 +168,8 @@ var store = new vuex.Store({
       api.delete('lists/' + list._id)
         .then(res => {
           dispatch('getListsByBoard', list.boardId)
+          dispatch('removeTask', list._id)
+          console.log("Succesfully removed List")
         })
         .catch(err => {
           commit('handleError', err)
@@ -208,9 +211,10 @@ var store = new vuex.Store({
         })
     },
     removeTask({ commit, dispatch }, task) {
+      debugger
       api.delete('tasks/' + task._id)
         .then(res => {
-          dispatch('getTasks')
+          dispatch('getTasksByList', task)
         })
         .catch(err => {
           commit('handleError', err)

@@ -23,7 +23,6 @@ module.exports = {
         path: '/boards/:boardId/lists/:listId/tasks',
         reqType: 'get',
         method(req, res, next) {
-            debugger
             let action = 'Find Tasks By List'
             Tasks.find({ listId: req.params.listId })
                 .then(tasks => {
