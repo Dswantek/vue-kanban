@@ -1,8 +1,14 @@
 <template>
     <div class="list-content">
-        <h4>{{task.name}}</h4>
-        <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
-        <p>{{task.description}}</p>
+        <div class="panel panel-default">
+          <div class="panel-heading panel-success">
+              <h4>{{task.name}}</h4>
+              <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
+          </div>
+            <div class="panel-body">
+                <p>{{task.description}}</p>
+            </div>
+        </div>
     </div>
 </template>
 
