@@ -53,7 +53,7 @@ var store = new vuex.Store({
       auth.post('login', payload)
         .then(res => {
           commit('setUser', res.data.data)
-
+          dispatch('setBoards', payload.creatorId)
         })
         .catch(err => {
           commit('handleError', err.response.data)

@@ -1,6 +1,6 @@
 <template>
     <div class="home text-center">
-        <div class="container-fluid">
+        <div class="container">
                 <signup></signup>
                 <!-- End of Modal Sign Up Form -->
                 <div class="content">
@@ -67,7 +67,7 @@
 
 </script>
 
-<style>
+<style scoped>
     /* .content {
        
     } */

@@ -43,7 +43,9 @@
       </div>
     </div>
     <div class="list-content" v-for="list in lists">
+      <div class="col-xs-6 col-md-3">
         <list :listprop="list"></list>
+      </div>
     </div>
   </div>
 </template>
@@ -97,5 +99,7 @@
 </script>
 
 <style scoped>
-  /* .board-content {} */
+  .btn {
+    margin-bottom: 6vh;
+  }
 </style>
