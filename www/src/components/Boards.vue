@@ -43,15 +43,17 @@
       <div class="row">
         <div v-for="board in boards">
           <div class="col-xs-10 col-md-4 text-center">
-            <div class="panel panel-default"></div>
-            <div class="panel-heading panel-success">
-              <router-link :to="'/boards/' + board._id">
-                <h3>{{board.name}}</h3>
-              </router-link>
-              <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeBoard(board)"></span>
-            </div>
-            <div class="panel-body">
-              <p>{{board.description}}</p>
+            <div class="panel panel-danger">
+
+              <div class="panel-heading">
+                <router-link :to="'/boards/' + board._id">
+                  <h3>{{board.name}}</h3>
+                </router-link>
+                <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeBoard(board)"></span>
+              </div>
+              <div class="panel-body">
+                <p>{{board.description}}</p>
+              </div>
             </div>
           </div>
         </div>

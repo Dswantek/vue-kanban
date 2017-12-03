@@ -1,9 +1,9 @@
 <template>
     <div>
-        <div class="list-content panel panel-default">
+        <div class="list-content panel panel-warning">
             <div class="panel-heading">
-                <h4>{{listprop.name}}</h4>
                 <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeList(listprop)"></span>
+                <h4>{{listprop.name}}</h4>
                 <p>{{listprop.description}}</p>
             </div>
 

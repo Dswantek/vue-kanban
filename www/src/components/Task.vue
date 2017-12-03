@@ -1,9 +1,9 @@
 <template>
     <div class="list-content">
-        <div class="panel panel-default">
-          <div class="panel-heading panel-success">
-              <h4>{{task.name}}</h4>
+        <div class="panel panel-success">
+          <div class="panel-heading">
               <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
+              <h4>{{task.name}}</h4>
           </div>
             <div class="panel-body">
                 <p>{{task.description}}</p>
