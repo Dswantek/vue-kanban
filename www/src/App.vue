@@ -5,8 +5,9 @@
         <nav class="navbar navbar-default navbar-fixed-top myNavbar">
           <!-- WEBSITE NAME -->
           <div class="navbar-text col-xs-12 col-md-4" style="font-family: 'Rock Salt', cursive">
-            <h3>Trak-It</h3>
-            <!-- <h5>(Tac-It)</h5> -->
+              <router-link class="pull-left" :to="'/'">
+                <h3>Trak-It</h3>
+              </router-link>
           </div>
           <!-- FORMS -->
           <login></login>
