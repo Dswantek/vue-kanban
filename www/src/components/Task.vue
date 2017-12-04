@@ -1,8 +1,19 @@
 <template>
-    <draggable :options="{group: 'tasks'}" @end="onEnd">
+    <draggable :options="{group: 'tasks'}">
+        <!-- v-model='movingTask' ondragover="event.preventDefault()" onend="updateTask" -->
         <div class="task-content">
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
+                    <span class="glyphicon glyphicon-plus pull-left">
+                        <div>
+                            <!-- <form @submit.prevent="moveTask">
+                                <select @change="moveTask" v-model="selectedList">
+                                    <option :value="list" v-for="list in lists"></option>
+                                </select>
+                            </form> -->
+
+                        </div>
+                    </span>
                     <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
                     <h4>{{task.name}}</h4>
                     <p>{{task.description}}</p>
@@ -31,12 +42,14 @@
 </template>
 
 <script>
+    import list from './List'
     import draggable from 'vuedraggable'
     export default {
         name: 'task',
         data() {
             return {
-                comment: {}
+                comment: {},
+                movingTask: {}
             }
         },
         components: {
@@ -67,11 +80,14 @@
             },
             removeComment(comment) {
                 this.$store.dispatch('removeComment', comment)
+            },
+            updatTask(event) {
+                console.log(event)
             }
         },
         computed: {
             tasks() {
-                return this.$store.state.tasks
+                return this.$store.state.tasks[this.task.listId]
             },
             comments() {
                 return this.$store.state.comments[this.task._id]

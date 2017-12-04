@@ -141,6 +141,7 @@ var store = new vuex.Store({
       api.delete('boards/' + board._id)
         .then(res => {
           dispatch('getBoards')
+          dispatch('removeList', board._id)
           console.log("Successfully deleted board")
         })
         .catch(err => {
@@ -227,10 +228,10 @@ var store = new vuex.Store({
         })
     },
     removeTask({ commit, dispatch }, task) {
-      debugger
       api.delete('tasks/' + task._id)
         .then(res => {
           dispatch('getTasksByList', task)
+          dispatch('removeComment', task._id)
         })
         .catch(err => {
           commit('handleError', err)
