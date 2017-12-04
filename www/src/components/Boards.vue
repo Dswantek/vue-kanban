@@ -48,13 +48,13 @@
         <div class="row">
           <div v-for="board in boards">
             <div class="col-xs-10 col-md-4 text-center">
-              <div class="panel panel-danger">
+              <div class="panel panel-info">
 
                 <div class="panel-heading">
+                  <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeBoard(board)"></span>
                   <router-link :to="'/boards/' + board._id">
                     <h3>{{board.name}}</h3>
                   </router-link>
-                  <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeBoard(board)"></span>
                 </div>
                 <div class="panel-body">
                   <p>{{board.description}}</p>
@@ -64,7 +64,7 @@
           </div>
         </div>
       </div>
-      
+
     </div>
   </div>
 

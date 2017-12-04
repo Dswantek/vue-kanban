@@ -68,7 +68,7 @@ var store = new vuex.Store({
       auth.post('login', payload)
         .then(res => {
           commit('setUser', res.data.data)
-          dispatch('setBoards', payload.creatorId)
+          dispatch('getBoards')
         })
         .catch(err => {
           commit('handleError', err.response.data)
@@ -102,6 +102,7 @@ var store = new vuex.Store({
       auth.delete('logout')
         .then(res => {
           commit('setUser', {})
+          dispatch('getBoards')
           console.log(res)
         })
 
