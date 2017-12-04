@@ -2,6 +2,8 @@ import axios from 'axios'
 import vue from 'vue'
 import vuex from 'vuex'
 import router from 'router'
+// import Sortable from 'vue-sortable'
+
 
 let api = axios.create({
   baseURL: 'http://localhost:3000/api/',
@@ -14,7 +16,16 @@ let auth = axios.create({
   timeout: 2000,
   withCredentials: true
 })
+
+// Sortable.create(list, {
+//   group:'list',
+//   animation: 100
+// })
+
+
 vue.use(vuex)
+// vue.use(Sortable)
+
 
 var store = new vuex.Store({
   state: {
@@ -23,7 +34,8 @@ var store = new vuex.Store({
     error: {},
     user: {},
     lists: [],
-    tasks: {}
+    tasks: {},
+    comments: {}
   },
   mutations: {
     setBoards(state, data) {
@@ -43,6 +55,9 @@ var store = new vuex.Store({
     },
     setTasks(state, data) {
       vue.set(state.tasks, data.listId, data.data)
+    },
+    setComments(state, data) {
+      vue.set(state.comments, data.taskId, data.data)
     }
   },
   actions: {
@@ -204,7 +219,7 @@ var store = new vuex.Store({
       api.post('/tasks', payload)
         .then(res => {
           dispatch('getTasksByList', payload)
-          console.log("succesfully created task")
+          console.log("Succesfully created task")
         })
         .catch(err => {
           commit('handleError', err)
@@ -215,6 +230,34 @@ var store = new vuex.Store({
       api.delete('tasks/' + task._id)
         .then(res => {
           dispatch('getTasksByList', task)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+
+    //Comments
+
+    addComment({ commit, dispatch }, payload) {
+      debugger
+      api.post('/comments', payload)
+        .then(res => {
+          dispatch('getCommentsByTask', payload)
+          console.log("Succesfully created comment")
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+
+    getCommentsByTask({ commit, dispatch }, payload) {
+      api('boards/' + payload.boardId + '/lists/' + payload.listId + '/tasks/' + payload.taskId + '/comments')
+        .then(res => { 
+          var data = {
+            data: res.data.data,
+            taskId: payload.taskId
+          }
+          commit('setComments', data)
         })
         .catch(err => {
           commit('handleError', err)

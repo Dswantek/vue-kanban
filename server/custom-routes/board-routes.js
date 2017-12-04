@@ -32,6 +32,20 @@ module.exports = {
                     return next(handleResponse(action, null, error))
                 })
         }
+    },
+    getCommentsByTask: {
+        path: '/boards/:boardId/lists/:listId/tasks/:taskId/comments',
+        reqType: 'get',
+        method(req, res, next) {
+            let action = 'Find Comments By Task'
+            Comments.find({ taskId: req.params.taskId })
+                .then(comments => {
+                    res.send(handleResponse(action, comments))
+                })
+                .catch(error => {
+                    return next(handleResponse(action, null, error))
+                })
+        }
     }
 
 }

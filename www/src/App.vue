@@ -49,4 +49,8 @@
   .page-content{
     margin-top: 20vh;
   }
+
+  .myNavbar{
+    background-color: #f9efa4;
+  }
 </style>

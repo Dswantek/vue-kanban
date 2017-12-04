@@ -41,9 +41,9 @@
                         </div>
                     </div>
                 </div>
-                <div v-for="task in tasks" class="task-content">
-                    <task :task="task"></task>
-                </div>
+                    <div v-for="task in tasks">
+                        <task :task="task"></task>
+                    </div>
                 <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" :data-target="target">Add Task</button>
             </div>
         </div>
@@ -56,6 +56,7 @@
 </template>
 
 <script>
+    // import draggable from 'vue-draggable'
     import Task from './Task'
     export default {
         name: 'list',
@@ -82,6 +83,14 @@
             board() {
                 return this.$store.state.activeBoard
             }
+            // myTask: {
+            //     get() {
+            //         return this.$store.state.tasks
+            //     },
+            //     set(value){
+            //         this.$store.commit('updateList', this.tasks.listprop._id)
+            //     }
+            // }
         },
         methods: {
             createTask() {
