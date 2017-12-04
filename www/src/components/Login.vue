@@ -1,11 +1,12 @@
 <template>
     <div class="login">
-
         <div class="navbar-form navbar-right col-xs-12 col-md-pull-1">
-            <h5 class="text-danger text-center" v-if="error">{{error}}</h5>
+            <h5 class="text-danger text-center" v-if="error">Please Login to Continue</h5>
             <!-- This is where we will send the login info to the server -->
             <div v-if="user._id">
-                <h4>Welcome, {{user.name}}</h4>
+                <router-link :to="'/profile'">
+                    <h4>Welcome, {{user.name}}</h4>
+                </router-link>
                 <div class="profileImage">
                     <img class="img-responsive userImage" :src="user.image" alt="Cat">
                 </div>
@@ -36,6 +37,7 @@
 </template>
 
 <script>
+    import Profile from './Profile'
     export default {
         data() {
             return {
@@ -44,6 +46,9 @@
                     password: ''
                 }
             }
+        },
+        components: {
+            Profile
         },
         methods: {
             submitLogin() {
