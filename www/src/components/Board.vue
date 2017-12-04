@@ -113,6 +113,7 @@
   .list-content > .row {
     overflow-x: auto;
     display: flex;
+    flex-wrap: nowrap;
     
 
   }
