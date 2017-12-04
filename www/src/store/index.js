@@ -109,7 +109,7 @@ var store = new vuex.Store({
 
 
     getBoards({ commit, dispatch }) {
-      api('boards')
+      api('userboards')
         .then(res => {
           commit('setBoards', res.data.data)
         })

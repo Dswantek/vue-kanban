@@ -2,7 +2,7 @@
     <draggable :options="{group: 'tasks'}">
         <div class="task-content">
             <div class="panel panel-success">
-                <div class="panel-heading">
+                <div class="panel-heading text-center">
                     <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
                     <h4>{{task.name}}</h4>
                     <p>{{task.description}}</p>

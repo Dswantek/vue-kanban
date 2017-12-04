@@ -48,11 +48,9 @@
       </div>
       <div class="panel-body list-content">
         <div class="row">
-          <div v-for="list in lists">
-            <div class="col-xs-6 col-md-3" id="list">
-              <list :listprop="list"></list>
-            </div>
-          </div>
+            <!-- <div class="col-xs-6 col-md-3" id="list"> -->
+              <list class="col-md-3" v-for="list in lists" :listprop="list"></list>
+            <!-- </div> -->
         </div>
       </div>
 
@@ -112,13 +110,16 @@
     margin-bottom: 6vh;
   }
 
-  .list-content .row {
+  .list-content > .row {
     overflow-x: auto;
-    white-space: nowrap;
+    display: flex;
+    
+
   }
 
-  .list-content .row .col-xs-3{
+  .list-content > .row > .col-md-3{
     display: inline-block;
     float: none;
+   
   }
 </style>
