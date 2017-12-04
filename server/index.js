@@ -3,6 +3,7 @@ var server = require('./config/dev-server')
 let mongoose = require('mongoose')
 let connection = mongoose.connection;
 
+// app.use(express.static(_dirname + '/public'))
 
 // Establishes MongoDb Connection
 mongoose.connect(process.env.CONNECTIONSTRING, {

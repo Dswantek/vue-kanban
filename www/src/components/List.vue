@@ -1,6 +1,6 @@
 <template>
-    <div>
-        <div class="list-content panel panel-warning">
+    <draggable :options="{group: 'listprop'}">
+        <div class="panel panel-warning">
             <div class="panel-heading">
                 <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeList(listprop)"></span>
                 <h4>{{listprop.name}}</h4>
@@ -41,27 +41,30 @@
                         </div>
                     </div>
                 </div>
-                    <div v-for="task in tasks">
-                        <task :task="task"></task>
-                    </div>
+
+                <div v-for="task in tasks">
+                    <task :task="task"></task>
+                </div>
                 <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" :data-target="target">Add Task</button>
+
             </div>
         </div>
         <!-- BEGIN MODAL -->
 
 
-    </div>
+    </draggable>
 
 
 </template>
 
 <script>
-    // import draggable from 'vue-draggable'
+    import draggable from 'vuedraggable'
     import Task from './Task'
     export default {
         name: 'list',
         components: {
-            Task
+            Task,
+            draggable
         },
         data() {
             return {

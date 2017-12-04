@@ -1,6 +1,6 @@
 <template>
   <div class="board-content">
-    <div class="panel panel-primary">
+    <div class="panel panel-info">
 
       <div class="panel-heading">
         <router-link class="pull-left" :to="'/'">
@@ -46,10 +46,12 @@
           </div>
         </div>
       </div>
-      <div class="panel-body">
-        <div class="list-content" v-for="list in lists">
-          <div class="col-xs-6 col-md-3" id="list">
-            <list :listprop="list"></list>
+      <div class="panel-body list-content">
+        <div class="row">
+          <div v-for="list in lists">
+            <div class="col-xs-6 col-md-3" id="list">
+              <list :listprop="list"></list>
+            </div>
           </div>
         </div>
       </div>
@@ -82,7 +84,6 @@
         this.$store.dispatch('setActiveBoard')
       },
       createList() {
-        debugger
         var newList = {
           name: this.list.name,
           description: this.list.description,
@@ -109,5 +110,15 @@
 <style scoped>
   .btn {
     margin-bottom: 6vh;
+  }
+
+  .list-content .row {
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+  .list-content .row .col-xs-3{
+    display: inline-block;
+    float: none;
   }
 </style>

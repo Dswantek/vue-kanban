@@ -2,6 +2,7 @@ let Users = require('../models/user')
 let Boards = require('../models/board')
 let Lists = require('../models/list')
 let Tasks = require('../models/task')
+let Comments = require('../models/comment')
 
 
 module.exports = {

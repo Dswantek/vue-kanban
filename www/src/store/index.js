@@ -239,7 +239,6 @@ var store = new vuex.Store({
     //Comments
 
     addComment({ commit, dispatch }, payload) {
-      debugger
       api.post('/comments', payload)
         .then(res => {
           dispatch('getCommentsByTask', payload)
@@ -258,6 +257,15 @@ var store = new vuex.Store({
             taskId: payload.taskId
           }
           commit('setComments', data)
+        })
+        .catch(err => {
+          commit('handleError', err)
+        })
+    },
+    removeComment({ commit, dispatch }, comment) {
+      api.delete('comments/' + comment._id)
+        .then(res => {
+          dispatch('getCommentsByTask', comment)
         })
         .catch(err => {
           commit('handleError', err)
