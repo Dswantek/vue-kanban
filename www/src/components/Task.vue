@@ -1,5 +1,5 @@
 <template>
-    <draggable :options="{group: 'tasks'}">
+    <draggable :options="{group: 'tasks'}" @end="onEnd">
         <div class="task-content">
             <div class="panel panel-success">
                 <div class="panel-heading text-center">

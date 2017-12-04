@@ -10,8 +10,9 @@
           <h3>
             {{board.name}}
           </h3>
+          <h5>{{board.description}}</h5>
+          <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" data-target="#addListModal">Add Lists</button>
         </div>
-        <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" data-target="#addListModal">Add Lists</button>
       </div>
       <!-- BEGIN MODAL -->
       <div id="addListModal" class="modal fade" role="dialog">
@@ -48,9 +49,9 @@
       </div>
       <div class="panel-body list-content">
         <div class="row">
-            <!-- <div class="col-xs-6 col-md-3" id="list"> -->
-              <list class="col-md-3" v-for="list in lists" :listprop="list"></list>
-            <!-- </div> -->
+          <!-- <div class="col-xs-6 col-md-3" id="list"> -->
+          <list class="col-md-3" v-for="list in lists" :listprop="list"></list>
+          <!-- </div> -->
         </div>
       </div>
 
@@ -110,17 +111,17 @@
     margin-bottom: 6vh;
   }
 
-  .list-content > .row {
+  .list-content>.row {
     overflow-x: auto;
     display: flex;
     flex-wrap: nowrap;
-    
+
 
   }
 
-  .list-content > .row > .col-md-3{
+  .list-content>.row>.col-md-3 {
     display: inline-block;
     float: none;
-   
+
   }
 </style>
