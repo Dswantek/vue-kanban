@@ -3,6 +3,7 @@ import Router from 'vue-router'
 import Boards from 'components/Boards'
 import Board from 'components/Board'
 import Home from 'components/Home'
+import Profile from 'components/Profile'
 
 Vue.use(Router)
 
@@ -21,6 +22,11 @@ export default new Router({
       path: '/',
       name: 'Home',
       component: Home
+    },
+    {
+      path: '/profile',
+      name: 'Profile',
+      component: Profile
     }
   ]
 })
