@@ -5,14 +5,14 @@
         </div>
         <div class="panel-body">
             <div v-if="showProfile">
-                <span class="glyphicon glyphicon-pencil pull-right" @click="showProfile"></span>
+                <span class="glyphicon glyphicon-pencil pull-right" @click="showProfile(false)"></span>
                 <h3>Name: {{user.name}}</h3>
                 <h3>Email: {{user.email}}</h3>
                 <h3>Username: {{user.username}}</h3>
                 <h3>Profile picture: {{user.image}}</h3>
             </div>
             <div v-else>
-                <span class="glyphicon glyphicon-pencil pull-right" @click="showProfile"></span>
+                <span class="glyphicon glyphicon-pencil pull-right" @click="showProfile(true)"></span>
                 <form type="submit" @submit.prevent="submitProfile">
                     <!-- NAME -->
                     <h3>{{user.name}}</h3>
@@ -28,11 +28,6 @@
                     <h3>{{user.email}}</h3>                    
                     <div class="form-group">
                         <input name="email" type="text" class="form-control" placeholder="Email" v-model='profile.email'>
-                    </div>
-                    <!-- PASSWORD INPUT FORM -->
-                    <h3>{{user.password}}</h3>                    
-                    <div class="form-group">
-                        <input name="password" type="password" class="form-control" placeholder="Password" v-model='profile.password'>
                     </div>
                     <!-- IMAGE -->
                     <h3>{{user.image}}</h3>                    
@@ -64,8 +59,8 @@
             }
             },
         methods: {
-            showProfile(){
-                this.$store.state.commit('setProfile')
+            showProfile(data){
+                this.$store.state.dispatch('setProfile', data)
             }
         },
         computed: {
