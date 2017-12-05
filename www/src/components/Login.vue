@@ -10,7 +10,7 @@
                 <div class="profileImage">
                     <img class="img-responsive userImage" :src="user.image" alt="Cat">
                 </div>
-                <button @click="logout">Logout</button>
+                <button class="logout-button" @click="logout">Logout</button>
             </div>
             <div v-else>
                 <form type="submit" @submit.prevent="submitLogin">
@@ -78,6 +78,9 @@
         max-height: 12vh;
         max-width: 12vh;
         display: inline-flex;
-
     }
+    .logout-button {
+    margin-top: 1vh;
+  }
+  
 </style>

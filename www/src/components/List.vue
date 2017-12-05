@@ -10,7 +10,7 @@
             </div>
         </div>
 
-        <droppable :options="{group: 'listprop'}">
+
             <div class="panel-body">
 
                 <div :id="listprop._id" class="modal fade" role="dialog">
@@ -52,7 +52,7 @@
                 <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" :data-target="target">Add Task</button>
 
             </div>
-        </droppable>
+
     </div>
     <!-- BEGIN MODAL -->
 

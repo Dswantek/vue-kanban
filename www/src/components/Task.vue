@@ -1,6 +1,5 @@
 <template>
-    <draggable :options="{group: 'tasks'}">
-        <!-- v-model='movingTask' ondragover="event.preventDefault()" onend="updateTask" -->
+    
         <div class="task-content">
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
@@ -49,7 +48,7 @@
                 </div>
             </div>
         </div>
-    </draggable>
+        
 </template>
 
 <script>
