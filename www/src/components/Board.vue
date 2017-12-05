@@ -3,10 +3,12 @@
     <div class="panel panel-info">
 
       <div class="panel-heading">
-        <router-link class="pull-left" :to="'/'">
-          <button>Boards</button>
-        </router-link>
-        <div class="text-center">
+        <div class="row">
+          <router-link class="col-xs-1" :to="'/'">
+            <button>Boards</button>
+          </router-link>
+        </div>
+        <div class="row text-center">
           <h3>
             {{board.name}}
           </h3>
