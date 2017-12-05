@@ -6,18 +6,28 @@
                 <div class="panel-heading text-center">
                     <!-- <span class="glyphicon glyphicon-plus pull-left"> -->
                     <!-- </span> -->
-                    <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
-                    <h4>{{task.name}}</h4>
-                    <p>{{task.description}}</p>
+                    <div class="row">
+                        <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
+                    </div>
+                    <div class="row">
+                        <h4>{{task.name}}</h4>
+                        <p>{{task.description}}</p>
+                    </div>
                 </div>
                 <div class="panel-body">
                     <div v-for="comment in comments">
-                        <ul class="text-center">
-                            <li>
-                                {{comment.text}}
-                                <span class="glyphicon glyphicon-trash pull-right" @click="removeComment(comment)"></span>
-                            </li>
-                        </ul>
+                        <div class="row">
+                            <ul class="text-left">
+                                <li>
+                                    <div class="col-xs-8">
+                                        {{comment.text}}
+                                    </div>
+                                    <div class="col-xs-1 pull-right">
+                                        <span class="glyphicon glyphicon-trash pull-right" @click="removeComment(comment)"></span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <form @submit.prevent="addComment">
                         <div class="form-group">
@@ -86,7 +96,7 @@
             updateTask(event) {
                 console.log(event)
             },
-            moveTask(task){
+            moveTask(task) {
                 this.$store.dispatch('setTasks', task)
             }
         },
@@ -108,7 +118,8 @@
     .delete-button {
         color: red;
     }
-    ul{
+
+    ul {
         list-style-type: none;
     }
 </style>
