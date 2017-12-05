@@ -28,7 +28,7 @@ var store = new vuex.Store({
     lists: [],
     tasks: {},
     comments: {},
-    showProfile: false
+    showProfile: true
   },
   mutations: {
     setBoards(state, data) {
@@ -58,10 +58,25 @@ var store = new vuex.Store({
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
+    //UPDATE PROFILE
     setProfile({ commit, dispatch }, payload){
       commit('setProfile', payload)
     },
-
+    // updateProfile({ commit, dispatch }, payload){
+    //   if(payload.profile.image === '') {
+    //     delete payload.profile.image
+    //   }else if(payload.profile.name === ''){
+    //     delete payload.profile.name
+    //   }else if(payload.profile.email === ''){
+    //     delete payload.profile.email
+    //   }else if(payload.profile.username === ''){
+    //     delete payload.profile.username
+    //   }
+    //   api.put('user/' + payload.user, payload)
+    //     .then(res => {
+    //       commit('setUser', res.data.data)
+    //     })
+    // },
     login({ commit, dispatch }, payload) {
       auth.post('login', payload)
         .then(res => {

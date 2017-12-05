@@ -1,4 +1,5 @@
 let Boards = require('../models/board')
+let Users = require('../models/user')
 
 module.exports = {
   userBoards: {
@@ -12,6 +13,20 @@ module.exports = {
         }).catch(error => {
           return next(handleResponse(action, null, error))
         })
+    }
+  },
+  userProfile: {
+    path: '/user/:userId',
+    reqType: 'put',
+    method(req, res, next){
+      let action = 'Update User Profile'
+      Users.findOneAndUpdate({_id: req.session.uid}, req.body)
+        .then(data => {
+          return res.send(handleResponse(action, { message: 'Successfully updated' }))
+      })
+        .catch(error => {
+          return next(handleResponse(action, null, error))
+      })
     }
   },
   sharedBoards: {
