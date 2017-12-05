@@ -17,14 +17,7 @@ let auth = axios.create({
   withCredentials: true
 })
 
-<<<<<<< HEAD
-
 vue.use(vuex)
-
-
-=======
-vue.use(vuex)
->>>>>>> 1fca89b5f3c8851e5aa98690215227aaff9a7918
 
 var store = new vuex.Store({
   state: {
