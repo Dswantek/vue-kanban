@@ -1,11 +1,7 @@
 <template>
-    <draggable :options="{group: 'tasks'}">
-        <!-- v-model='movingTask' ondragover="event.preventDefault()" onend="updateTask" -->
-        <div class="task-content">
+        <div class="task-content" draggable="true" v-on:dragstart.capture="moving">
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
-                    <!-- <span class="glyphicon glyphicon-plus pull-left"> -->
-                    <!-- </span> -->
                     <div class="row">
                         <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
                     </div>
@@ -36,35 +32,29 @@
                         <div class="form-group">
                             <button type="submit" @click="addComment">Add Comment</button>
                         </div>
-
                         <div>
-                            <form @submit.prevent="moveTask">
+                            <!-- <form @submit.prevent="moveTask">
                                 <select @change="moveTask" v-model="selectedList">
                                     <option :value="list" v-for="list in lists">{{list.name}}</option>
                                 </select>
-                            </form>
+                            </form> -->
                         </div>
-
                     </form>
                 </div>
             </div>
         </div>
-    </draggable>
 </template>
 
 <script>
     import list from './List'
-    import draggable from 'vuedraggable'
     export default {
         name: 'task',
         data() {
             return {
-                comment: {},
-                movingTask: {}
+                comment: {}
             }
         },
         components: {
-            draggable,
             list
         },
         props: ['task'],
@@ -93,12 +83,12 @@
             removeComment(comment) {
                 this.$store.dispatch('removeComment', comment)
             },
-            updateTask(event) {
+            moving(event){
                 console.log(event)
-            },
-            moveTask(task) {
-                this.$store.dispatch('setTasks', task)
+                event.dataTransfer.setData('text/javascript', JSON.stringify(this.task))
+                console.log('We are Moving')
             }
+
         },
         computed: {
             tasks() {

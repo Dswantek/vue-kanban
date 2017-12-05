@@ -17,15 +17,7 @@ let auth = axios.create({
   withCredentials: true
 })
 
-// Sortable.create(list, {
-//   group:'list',
-//   animation: 100
-// })
-
-
 vue.use(vuex)
-// vue.use(Sortable)
-
 
 var store = new vuex.Store({
   state: {
@@ -35,7 +27,8 @@ var store = new vuex.Store({
     user: {},
     lists: [],
     tasks: {},
-    comments: {}
+    comments: {},
+    showProfile: false
   },
   mutations: {
     setBoards(state, data) {
@@ -58,6 +51,9 @@ var store = new vuex.Store({
     },
     setComments(state, data) {
       vue.set(state.comments, data.taskId, data.data)
+    },
+    setProfile(state, data) {
+      state.showProfile = data
     }
   },
   actions: {
@@ -93,9 +89,6 @@ var store = new vuex.Store({
         .catch(err => {
           commit('handleError', err)
         })
-      // Possibly .catch(()=>[
-      // router.push({ name: 'Login'})
-      // ])
     },
 
     logout({ commit, dispatch }) {
@@ -107,7 +100,6 @@ var store = new vuex.Store({
         })
 
     },
-
 
     getBoards({ commit, dispatch }) {
       api('userboards')
@@ -162,15 +154,7 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    // getList({ commit, dispatch }, id) {
-    //   api('lists/' + id)
-    //     .then(res => {
-    //       commit('setActiveList', res.data.data)
-    //     })
-    //     .catch(err => {
-    //       commit('handleError', err)
-    //     })
-    // },
+
     createList({ commit, dispatch }, list) {
       api.post('lists/', list)
         .then(res => {
@@ -208,15 +192,14 @@ var store = new vuex.Store({
           commit('handleError', err)
         })
     },
-    // getTask({ commit, dispatch }, id) {
-    //   api('tasks/' + id)
-    //     .then(res => {
-    //       commit('setActiveTask', res.data.data)
-    //     })
-    //     .catch(err => {
-    //       commit('handleError', err)
-    //     })
-    // },
+    updateTask({ commit, dispatch }, payload) {
+      api.put('tasks/' + payload.task._id, payload)
+        .then(res => {
+          console.log(res)
+          dispatch('getTasksByList', payload.task)
+          dispatch('getTasksByList', payload)
+        })
+    },
     createTask({ commit, dispatch }, payload) {
       api.post('/tasks', payload)
         .then(res => {
