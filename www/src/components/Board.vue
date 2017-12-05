@@ -3,6 +3,7 @@
     <div class="panel panel-info">
 
       <div class="panel-heading">
+<<<<<<< HEAD
         <div class="row">
           <router-link class="col-xs-1" :to="'/'">
             <button>Boards</button>
@@ -12,6 +13,13 @@
           <h3>
             {{board.name}}
           </h3>
+=======
+        <router-link class="pull-left" :to="'/'">
+          <button>Boards</button>
+        </router-link>
+        <div class="text-center">
+          <h3 class="center">{{board.name}}</h3>
+>>>>>>> b96400e6548ce778ace3a29990eeed2c63e2f8bd
           <h5>{{board.description}}</h5>
           <button type="button" class="btn btn-info btn-md" style="margin-top: 1.5rem" data-toggle="modal" data-target="#addListModal">Add Lists</button>
         </div>
@@ -51,12 +59,9 @@
       </div>
       <div class="panel-body list-content">
         <div class="row">
-          <!-- <div class="col-xs-6 col-md-3" id="list"> -->
           <list class="col-md-3" v-for="list in lists" :listprop="list"></list>
-          <!-- </div> -->
         </div>
       </div>
-
     </div>
   </div>
 </template>
@@ -112,18 +117,17 @@
   .btn {
     margin-bottom: 6vh;
   }
-
   .list-content>.row {
     overflow-x: auto;
     display: flex;
     flex-wrap: nowrap;
-
-
   }
-
   .list-content>.row>.col-md-3 {
     display: inline-block;
     float: none;
-
+  }
+  .center{
+    text-align: center !important;
+    display: inline-flex !important;
   }
 </style>
