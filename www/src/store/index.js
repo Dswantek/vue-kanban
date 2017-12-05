@@ -2,17 +2,17 @@ import axios from 'axios'
 import vue from 'vue'
 import vuex from 'vuex'
 import router from 'router'
-// import Sortable from 'vue-sortable'
 
+let base = window.location.host.indexOf('localhost') > -1 ? '//localhost:3000/' : '/'
 
 let api = axios.create({
-  baseURL: 'http://localhost:3000/api/',
+  baseURL: base + 'api/',
   timeout: 2000,
   withCredentials: true
 })
 
 let auth = axios.create({
-  baseURL: 'http://localhost:3000/',
+  baseURL: base,
   timeout: 2000,
   withCredentials: true
 })
