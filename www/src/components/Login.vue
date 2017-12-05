@@ -10,7 +10,9 @@
                 <div class="profileImage">
                     <img class="img-responsive userImage" :src="user.image" alt="Cat">
                 </div>
-                <button class="logout-button" @click="logout">Logout</button>
+                <router-link :to="'/'">
+                    <button class="logout-button" @click="logout">Logout</button>
+                </router-link>
             </div>
             <div v-else>
                 <form type="submit" @submit.prevent="submitLogin">

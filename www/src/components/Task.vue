@@ -1,10 +1,5 @@
 <template>
-<<<<<<< HEAD
-    
-        <div class="task-content">
-=======
         <div class="task-content" draggable="true" v-on:dragstart.capture="moving">
->>>>>>> 1fca89b5f3c8851e5aa98690215227aaff9a7918
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
                     <div class="row">
