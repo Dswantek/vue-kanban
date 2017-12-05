@@ -24,7 +24,7 @@
                     </div>
                     <!-- LOGIN BUTTON -->
                     <div class="form-group">
-                        <button type="submit" class="btn btn-default navbar-btn">Login</button>
+                        <button type="submit" class="btn btn-default navbar-btn"><span class="glyphicon glyphicon-lock"></span> Login</button>
                     </div>
                 </form>
                 <!-- Trigger the sign-up modal with a button -->
