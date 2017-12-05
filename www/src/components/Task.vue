@@ -4,16 +4,8 @@
         <div class="task-content">
             <div class="panel panel-success">
                 <div class="panel-heading text-center">
-                    <span class="glyphicon glyphicon-plus pull-left">
-                        <div>
-                            <!-- <form @submit.prevent="moveTask">
-                                <select @change="moveTask" v-model="selectedList">
-                                    <option :value="list" v-for="list in lists"></option>
-                                </select>
-                            </form> -->
-
-                        </div>
-                    </span>
+                    <!-- <span class="glyphicon glyphicon-plus pull-left"> -->
+                    <!-- </span> -->
                     <span class="delete-button glyphicon glyphicon-remove-circle pull-right" @click="removeTask(task)"></span>
                     <h4>{{task.name}}</h4>
                     <p>{{task.description}}</p>
@@ -34,6 +26,15 @@
                         <div class="form-group">
                             <button type="submit" @click="addComment">Add Comment</button>
                         </div>
+
+                        <div>
+                            <form @submit.prevent="moveTask">
+                                <select @change="moveTask" v-model="selectedList">
+                                    <option :value="list" v-for="list in lists">{{list.name}}</option>
+                                </select>
+                            </form>
+                        </div>
+
                     </form>
                 </div>
             </div>
@@ -53,7 +54,8 @@
             }
         },
         components: {
-            draggable
+            draggable,
+            list
         },
         props: ['task'],
         mounted() {
@@ -81,8 +83,11 @@
             removeComment(comment) {
                 this.$store.dispatch('removeComment', comment)
             },
-            updatTask(event) {
+            updateTask(event) {
                 console.log(event)
+            },
+            moveTask(task){
+                this.$store.dispatch('setTasks', task)
             }
         },
         computed: {
@@ -91,6 +96,9 @@
             },
             comments() {
                 return this.$store.state.comments[this.task._id]
+            },
+            lists() {
+                return this.$store.state.lists
             }
         }
     }
