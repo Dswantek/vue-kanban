@@ -12,7 +12,7 @@
                 </div>
                 <div class="panel-body">
                     <div v-for="comment in comments">
-                        <ul>
+                        <ul class="text-center">
                             <li>
                                 {{comment.text}}
                                 <span class="glyphicon glyphicon-trash pull-right" @click="removeComment(comment)"></span>
@@ -107,5 +107,8 @@
 <style scoped>
     .delete-button {
         color: red;
+    }
+    ul{
+        list-style-type: none;
     }
 </style>
