@@ -58,7 +58,9 @@ var store = new vuex.Store({
   },
   actions: {
     //when writing your auth routes (login, logout, register) be sure to use auth instead of api for the posts
-
+    setProfile({ commit, dispatch }, payload){
+      commit('setProfile', payload)
+    },
 
     login({ commit, dispatch }, payload) {
       auth.post('login', payload)
