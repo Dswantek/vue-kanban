@@ -8,7 +8,7 @@ let schema = new Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true, dropDups: true },
   username: { type: String, required: true, unique: true, dropDups: true },
-  image: { type: String, default: 'https://i.ytimg.com/vi/WgvTgV5EoGY/maxresdefault.jpg'},
+  image: { type: String, default: 'http://laoblogger.com/images/default-profile-picture-5.jpg'},
   password: { type: String, required: true },
   created: { type: Number, required: true, default: Date.now() }
 })
